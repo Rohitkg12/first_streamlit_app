@@ -26,3 +26,8 @@ streamlit.dataframe(fruits_to_show)
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 streamlit.header("Fruityvice Fruit Advice!")
 streamlit.text(fruityvice_response.json())
+
+# use pandas funstion json_normalize to flatten out the json response
+fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+# use streamlit's data frame function to display the API response in table format
+streamlit.dataframe(fruityvice_normalized)
