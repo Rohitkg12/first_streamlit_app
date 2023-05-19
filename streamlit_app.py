@@ -36,6 +36,9 @@ fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # use streamlit's data frame function to display the API response in table format
 streamlit.dataframe(fruityvice_normalized)
 
+#allow the end user to add a fruit to the list
+add_my_fruit = streamlit.text_input('What fruit would you like to add','Jackfruit')
+streamlit.write('Thanks for adding ', add_my_fruit)
 
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
